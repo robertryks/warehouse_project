@@ -1,5 +1,5 @@
 from pathlib import Path
-
+from django.urls import reverse_lazy
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -113,3 +113,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'warehouse_app.User'
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'

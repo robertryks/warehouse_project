@@ -1,30 +1,40 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
-from .models import Dimension, Company
+from .models import User
 
 
-class CompanyForm(forms.ModelForm):
+class RegisterForm(UserCreationForm):
     class Meta:
-        model = Company
-        fields = ("tax_id", "name", "users")
+        model = User
+        fields = ["username", "password1", "password2"]
         labels = {
-            "tax_id": "NIP:",
-            "name": "Nazwa:",
-            "users": "Użytkownicy:",
+            "username": "Nazwa użytkownika"
         }
 
 
-class DimensionForm(forms.ModelForm):
-    class Meta:
-        model = Dimension
-        fields = ("size",)
-        labels = {
-            "size": "Średnica w mm"
-        }
-        widgets = {
-            "size": forms.TextInput(
-                attrs={"placeholder": "0.00"}
-            )
-        }
+# class CompanyForm(forms.ModelForm):
+#     class Meta:
+#         model = Company
+#         fields = ("tax_id", "name", "users")
+#         labels = {
+#             "tax_id": "NIP:",
+#             "name": "Nazwa:",
+#             "users": "Użytkownicy:",
+#         }
+#
+#
+# class DimensionForm(forms.ModelForm):
+#     class Meta:
+#         model = Dimension
+#         fields = ("size",)
+#         labels = {
+#             "size": "Średnica w mm"
+#         }
+#         widgets = {
+#             "size": forms.TextInput(
+#                 attrs={"placeholder": "0.00"}
+#             )
+#         }
 
 
