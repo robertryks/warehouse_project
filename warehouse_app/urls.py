@@ -3,14 +3,15 @@ from django.contrib.auth.views import LogoutView
 from . import views
 
 urlpatterns = [
-    path('index/', views.IndexView.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('panel/', views.PanelView.as_view(), name='panel'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path("register/", views.RegisterView.as_view(), name="register"),
+    path('companies/', views.CompanyList.as_view(), name='company-list')
 ]
 
 htmx_views = [
-    path("check-username/", views.check_username, name='check-username'),
+
 ]
 
 urlpatterns += htmx_views

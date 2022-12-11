@@ -5,7 +5,10 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Panel</a>
+                <a class="nav-link" href="{% url 'index' %}">Panel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'company-list' %}">Firmy</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Wyloguj</a>
@@ -14,11 +17,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Zaloguj</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Zarejestruj się</a>
-            </li>
             {% endif %}
-
         </ul>
+        {% include 'partials/company-choise-list.html'%}
     </div>
 </nav>

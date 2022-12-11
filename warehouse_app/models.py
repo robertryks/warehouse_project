@@ -1,46 +1,43 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
 
-
-# Create your models here.
-# class BaseModel(models.Model):
-#     updated = models.DateTimeField(auto_now=True,
-#                                    verbose_name='Data aktualizacji',
-#                                    db_index=True)
-#
-#     created = models.DateTimeField(auto_now_add=True,
-#                                    verbose_name='Data utworzenia')
-#
-#     class Meta:
-#         abstract = True
+from warehouse_project import settings
 
 
-class User(AbstractUser):
-    pass
+class BaseModel(models.Model):
+    updated = models.DateTimeField(auto_now=True,
+                                   verbose_name='Data aktualizacji',
+                                   db_index=True)
+
+    created = models.DateTimeField(auto_now_add=True,
+                                   verbose_name='Data utworzenia')
+
+    class Meta:
+        abstract = True
 
 
-# class Company(BaseModel):
-#     tax_id = models.CharField(max_length=15,
-#                               verbose_name='NIP',
-#                               unique=True)
-#
-#     name = models.CharField(max_length=50,
-#                             verbose_name='Nazwa firmy')
-#
-#     users = models.ManyToManyField(User, related_name='company_users_rel',
-#                                    verbose_name='Użytkownicy')
-#
-#     class Meta:
-#         verbose_name = 'Firma'
-#         verbose_name_plural = 'Firmy'
-#         ordering = ['name']
-#         indexes = [
-#             models.Index(fields=['tax_id'], name='company_nip_idx'),
-#             models.Index(fields=['name'], name='company_name_idx')
-#         ]
-#
-#     def __str__(self):
-#         return f"{self.name} - ({self.tax_id})"
+class Company(BaseModel):
+    tax_id = models.CharField(max_length=15,
+                              verbose_name='NIP',
+                              unique=True)
+
+    name = models.CharField(max_length=50,
+                            verbose_name='Nazwa firmy')
+
+    users = models.ManyToManyField(User, related_name='companies',
+                                   verbose_name='Użytkownicy')
+
+    class Meta:
+        verbose_name = 'Firma'
+        verbose_name_plural = 'Firmy'
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['tax_id'], name='company_nip_idx'),
+            models.Index(fields=['name'], name='company_name_idx')
+        ]
+
+    def __str__(self):
+        return f"{self.name} - ({self.tax_id})"
 #
 #
 # class Dimension(BaseModel):

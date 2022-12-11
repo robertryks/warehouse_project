@@ -1,0 +1,9 @@
+{% if companies %}
+    <ul>
+        {% for company in companies %}
+            <li>{{ company.name }} ({{ company.tax_id }})</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak firm na liście użytkownika</p>
+{% endif %}

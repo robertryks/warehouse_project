@@ -1,29 +1,19 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 
-from .models import User
+from warehouse_app.models import Company
 
 
-class RegisterForm(UserCreationForm):
+class CompanyForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ["username", "password1", "password2"]
+        model = Company
+        fields = ("tax_id", "name", "users")
         labels = {
-            "username": "Nazwa użytkownika"
+            "tax_id": "NIP:",
+            "name": "Nazwa:",
+            "users": "Użytkownicy:",
         }
 
 
-# class CompanyForm(forms.ModelForm):
-#     class Meta:
-#         model = Company
-#         fields = ("tax_id", "name", "users")
-#         labels = {
-#             "tax_id": "NIP:",
-#             "name": "Nazwa:",
-#             "users": "Użytkownicy:",
-#         }
-#
-#
 # class DimensionForm(forms.ModelForm):
 #     class Meta:
 #         model = Dimension

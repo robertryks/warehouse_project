@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+
+        <form action="">
+            {% csrf_token %}
+            <input type="text" name="companytaxid" class="" placeholder="Podaj NIP firmy">
+            <input type="text" name="companyname" class="" placeholder="Podaj nazwę firmy">
+            <button type="submit" class="btn btn-success btn-sm">Dodaj firmę</button>
+        </form>
+
+    {% endif %}
+
+    <div id="company_list">
+        {% include 'partials/company-list.html' %}
+    </div>
+{% endblock %}
