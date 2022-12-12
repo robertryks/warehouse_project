@@ -1,18 +1,5 @@
 from django import forms
 
-from warehouse_app.models import Company
-
-
-class CompanyForm(forms.ModelForm):
-    class Meta:
-        model = Company
-        fields = ("tax_id", "name", "users")
-        labels = {
-            "tax_id": "NIP:",
-            "name": "Nazwa:",
-            "users": "Użytkownicy:",
-        }
-
 
 # class DimensionForm(forms.ModelForm):
 #     class Meta:

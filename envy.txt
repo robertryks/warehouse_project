@@ -1,0 +1,4 @@
+SECRET_KEY = 'django-insecure-t2pjaq%d)h@8_0y0a)(_5yqs@0id*_@8hlm1-g!cvl=*@++--j'
+EMAIL_HOST = 'mail.brvip.pl'
+EMAIL_HOST_USER = 'biuro@brvip.pl'
+EMAIL_HOST_PASSWORD = 'Noneta1967!'
